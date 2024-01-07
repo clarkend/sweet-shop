@@ -1,15 +1,62 @@
 plugins {
-    id 'java'
+    id 'org.springframework.boot' version '3.0.0'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'java-library'
 }
 
 group = 'org.clarke.sweetshop'
-version = '1.0-SNAPSHOT'
+version = '1.0.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
+sourceSets {
+    api {}
+    main {
+        //Enable Main sourceset to see the API sourceset
+        compileClasspath += sourceSets.api.output
+        runtimeClasspath += sourceSets.api.output
+    }
+    intTest {
+        compileClasspath += sourceSets.main.output + sourceSets.api.output
+        runtimeClasspath += sourceSets.main.output + sourceSets.api.output
+    }
+}
+
+configurations {
+    //Enable the API sourceset to see Implementation
+    apiImplementation.extendsFrom(implementation)
+    testImplementation.extendsFrom(implementation)
+    intTestImplementation.extendsFrom(testImplementation)
+}
+
+
 dependencies {
+    //Spring Dependencies
+    api 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation "org.springframework.boot:spring-boot-starter-actuator:3.1.0"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa:3.1.0"
+    implementation "org.springframework.cloud:spring-cloud-starter-openfeign:3.0.3"
+
+    // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0'
+
+    implementation 'org.apache.commons:commons-lang3:3.6'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
+
+    implementation 'com.h2database:h2'
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+    implementation 'org.hibernate:hibernate-validator:8.0.1.Final'
+    // https://mvnrepository.com/artifact/org.javamoney/moneta
+    implementation 'org.javamoney:moneta:1.4.2'
+
+    implementation 'com.microsoft.sqlserver:mssql-jdbc'
+
+
+    //Test Dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
