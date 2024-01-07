@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RequestMapping("/product")
 public interface ProductApi {
 
@@ -18,6 +21,7 @@ public interface ProductApi {
     @GetMapping("/{productId}")
     ProductResponse findProductById(@PathVariable String productId);
 
-
+    @GetMapping("/all")
+    List<ProductResponse> findAll();
 
 }
