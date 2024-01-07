@@ -2,12 +2,14 @@ package org.clarke.sweetshop.db.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity(name = "product")
 public class ProductEntity extends AuditEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "product_id")
     private Long productId;
 
     @Column(name = "product_name")
@@ -15,6 +17,10 @@ public class ProductEntity extends AuditEntity {
 
     @Column(name = "product_description")
     private String description;
+//
+//    @OneToMany
+//    @JoinColumn(name = "asset_id", referencedColumnName = "product_id")
+//    private List<AssetEntity> images;
 
     public void setProductId(Long id) {
         this.productId = id;
@@ -55,4 +61,16 @@ public class ProductEntity extends AuditEntity {
         return this;
     }
 
+//    public List<AssetEntity> getImages() {
+//        return images;
+//    }
+//
+//    public void setImages(List<AssetEntity> images) {
+//        this.images = images;
+//    }
+//
+//    public ProductEntity images(List<AssetEntity> images) {
+//        this.images = images;
+//        return this;
+//    }
 }

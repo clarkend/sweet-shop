@@ -1,3 +1,6 @@
+--INSERT INTO asset(picture) VALUES
+--    (FILE_READ('/src/main/img/fizzy-cola-bottles.jpg'));
+
 INSERT INTO product(product_name, product_description, created_date, last_updated_date) VALUES
     ('Fizzy Cola Bottles', 'Mini Fizzy Cola Bottles are cola flavoured bottles with a sour fizzy sugar coating.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Foam Shrimp', 'Mini Foam Shrimp are a retro favourite which have stood the test of time. Pink in colour, strawberry in flavour and in the shape of a shrimp.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),

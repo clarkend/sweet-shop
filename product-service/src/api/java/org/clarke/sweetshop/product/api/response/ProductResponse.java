@@ -1,11 +1,14 @@
 package org.clarke.sweetshop.product.api.response;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ProductResponse {
     private Long id;
     private String name;
     private String description;
+
+    private List<AssetResponse> assetResponse;
 
     private LocalDateTime createdDate;
 
@@ -74,6 +77,19 @@ public class ProductResponse {
 
     public ProductResponse lastUpdateTime(LocalDateTime lastUpdateTime) {
         this.lastUpdateTime = lastUpdateTime;
+        return this;
+    }
+
+    public List<AssetResponse> getAssetResponse() {
+        return assetResponse;
+    }
+
+    public void setAssetResponse(List<AssetResponse> assetResponse) {
+        this.assetResponse = assetResponse;
+    }
+
+    public ProductResponse assetResponses(List<AssetResponse> assetResponse){
+        this.assetResponse = assetResponse;
         return this;
     }
 }
