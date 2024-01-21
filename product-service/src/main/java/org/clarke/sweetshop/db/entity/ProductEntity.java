@@ -61,6 +61,7 @@ public class ProductEntity extends AuditEntity {
         return this;
     }
 
+
 //    public List<AssetEntity> getImages() {
 //        return images;
 //    }

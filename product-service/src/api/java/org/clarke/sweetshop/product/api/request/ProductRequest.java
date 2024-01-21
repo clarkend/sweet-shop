@@ -1,4 +1,6 @@
 package org.clarke.sweetshop.product.api.request;
 
-public record ProductRequest() {
+import jakarta.validation.constraints.NotNull;
+
+public record ProductRequest(@NotNull() String name, String description) {
 }
